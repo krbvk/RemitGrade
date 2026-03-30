@@ -2,7 +2,7 @@
 name        = "remit_grade"
 version     = "0.1.0"
 edition     = "2021"
-description = "Grade-gated USDC pool release and cross-border micropayments for SEA students and migrant sponsors — built on Stellar Soroban"
+description = "Grade-gated XLM pool release and cross-border micropayments for SEA students and migrant sponsors — built on Stellar Soroban"
 license     = "MIT"
 
 [lib]

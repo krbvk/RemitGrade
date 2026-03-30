@@ -14,8 +14,8 @@ const ADMIN: Symbol = symbol_short!("ADMIN");
 
 /// Stores a student's remittance pool and grade-unlock state.
 ///
-/// `total_deposited`  – lifetime USDC deposited by all sponsors for this student
-/// `total_released`   – USDC already paid out after grade milestones
+/// `total_deposited`  – lifetime XLM deposited by all sponsors for this student
+/// `total_released`   – XLM already paid out after grade milestones
 /// `grade_milestones` – bitmask: bit 0 = grade 1 unlocked, bit 1 = grade 2, etc.
 /// `milestone_count`  – total milestones agreed at enrolment
 #[contracttype]
@@ -118,11 +118,11 @@ impl RemitGrade {
 
     // ── Sponsor deposit ──────────────────────────────────────────────────────
 
-    /// Any sponsor (migrant worker, family member, employer) deposits USDC into
+    /// Any sponsor (migrant worker, family member, employer) deposits XLM into
     /// the contract on behalf of `student`.  Funds are held here until a grade
     /// milestone is unlocked by the admin.
     ///
-    /// `amount` – token stroops (1 USDC = 10_000_000 stroops)
+    /// `amount` – token stroops (1 XLM = 10_000_000 stroops)
     pub fn deposit_funds(
         env:     Env,
         sponsor: Address,
@@ -136,7 +136,7 @@ impl RemitGrade {
             panic!("amount must be positive");
         }
 
-        // Pull USDC from sponsor → contract
+        // Pull XLM from sponsor → contract
         let token_client = token::Client::new(&env, &token);
         token_client.transfer(&sponsor, &env.current_contract_address(), &amount);
 
@@ -187,7 +187,7 @@ impl RemitGrade {
     /// wallet.  Requires that:
     ///   1. The grade bit for `index` is set.
     ///   2. The tranche has not already been disbursed.
-    ///   3. The contract holds enough USDC to cover the tranche.
+    ///   3. The contract holds enough XLM to cover the tranche.
     ///
     /// Tranche size = total_deposited / milestone_count  (integer division).
     pub fn release_tranche(
@@ -221,7 +221,7 @@ impl RemitGrade {
             panic!("no funds deposited yet");
         }
 
-        // Transfer USDC from contract → student
+        // Transfer XLM from contract → student
         let token_client = token::Client::new(&env, &token);
         token_client.transfer(&env.current_contract_address(), &student, &tranche);
 
@@ -235,7 +235,7 @@ impl RemitGrade {
 
     // ── Cross-border micropayment ────────────────────────────────────────────
 
-    /// Migrant sponsor sends a direct USDC micropayment to any receiver
+    /// Migrant sponsor sends a direct XLM micropayment to any receiver
     /// (student, family member, landlord).  Transfer is atomic — no escrow hop.
     /// An on-chain RemitReceipt is stored so the receiver can show proof of
     /// payment to a registrar or employer.
