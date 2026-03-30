@@ -5,8 +5,8 @@
 | Field | What to Submit |
 |-------|----------------|
 | **GitHub Repository** | Public repo link with your contract source code |
-| **Contract ID** | CC6HQQVLJLCEB7GDVTL6F5XFWEXR7AY5CE57Z63355NA2WJC6UTMJEQB |
-| **Stellar Expert Link** | `https://stellar.expert/explorer/testnet/tx/53f0252993e41d2696e92bc01010048187574fe5fe48a8265e041c31d966a751` |
+| **Contract ID** | CAMJGBNR6HLZXKLOCQVJWPHVCRNSYT3KMVFWAW4BZI256BGL23SUQ7EN |
+| **Stellar Expert Link** | `https://stellar.expert/explorer/testnet/tx/f50ad4ed4ee75dc8e0d759e0737a52463410a39674172ff0176981882c6e48ff` |
 | **Short Description** |  Milestone-gated scholarship disbursement and cross-border micropayments for students and migrants in Southeast Asia — built on Stellar Soroban |
 
 ---
