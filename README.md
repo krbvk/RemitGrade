@@ -10,15 +10,15 @@
 | **Short Description** |  Milestone-gated scholarship disbursement and cross-border micropayments for students and migrants in Southeast Asia — built on Stellar Soroban |
 ---
 # Stellar Expert ScreenShot
-<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/81ac0c74-ddf3-424e-9a81-c73ba6573e4a" />
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/017981ab-01a6-4859-9642-e386ab55e0d3" />
 
 ## The Problem
 
-A second-year student in Surabaya, Indonesia whose living expenses and tuition are funded by a parent working in South Korea has no way to receive small, frequent XLM transfers without paying 7–10 % in remittance fees — and the parent has no guarantee the money is spent on verified academic progress rather than diverted. Every semester, thousands of Indonesian students drop out or lose housing not because sponsors stop caring, but because the money arrives late, expensive, or unverifiable.
+A second-year student in Surabaya, Indonesia whose living expenses and tuition are funded by a parent working in South Korea has no way to receive small, frequent bank transfers without paying 7–10 % in remittance fees — and the parent has no guarantee the money is spent on verified academic progress rather than diverted. Every semester, thousands of Indonesian students drop out or lose housing not because sponsors stop caring, but because the money arrives late, expensive, or unverifiable.
 
 ## The Solution
 
-RemitGrade puts the sponsor–student funding relationship on Stellar Soroban. A university admin enrolls a student with a set number of grade milestones. Migrant sponsors deposit XLM directly into the student's on-chain pool. Each time an academic milestone is verified (passing grade, semester completion), the admin unlocks the corresponding tranche, releasing an equal share of pooled XLM to the student's Freighter wallet in seconds for less than $0.001 in fees. Sponsors can also send instant cross-border micropayments directly to any receiver via send_remittance, with an on-chain receipt the student can show to a university registrar.
+RemitGrade puts the sponsor–student funding relationship on Stellar Soroban. A university admin enrolls a student with a set number of grade milestones. Migrant sponsors deposit XLM directly into the student's on-chain pool. Each time an academic milestone is verified (passing grade, semester completion), the admin unlocks the corresponding tranche, releasing an equal share of pooled XLM to the student's Freighter wallet in seconds for small fees. Sponsors can also send instant cross-border micropayments directly to any receiver via send_remittance, with an on-chain receipt the student can show to a university registrar.
 
 ---
 
