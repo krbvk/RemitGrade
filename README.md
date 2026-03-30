@@ -4,7 +4,7 @@
 
 | Field | What to Submit |
 |-------|----------------|
-| **GitHub Repository** | Public repo link with your contract source code |
+| **GitHub Repository** | https://github.com/krbvk/RemitGrade |
 | **Contract ID** | CAMJGBNR6HLZXKLOCQVJWPHVCRNSYT3KMVFWAW4BZI256BGL23SUQ7EN |
 | **Stellar Expert Link** | `https://stellar.expert/explorer/testnet/tx/f50ad4ed4ee75dc8e0d759e0737a52463410a39674172ff0176981882c6e48ff` |
 | **Short Description** |  Milestone-gated scholarship disbursement and cross-border micropayments for students and migrants in Southeast Asia — built on Stellar Soroban |
