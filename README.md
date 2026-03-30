@@ -6,7 +6,7 @@
 |-------|----------------|
 | **GitHub Repository** | https://github.com/krbvk/RemitGrade |
 | **Contract ID** | CAMJGBNR6HLZXKLOCQVJWPHVCRNSYT3KMVFWAW4BZI256BGL23SUQ7EN |
-| **Stellar Expert Link** | `https://stellar.expert/explorer/testnet/tx/f50ad4ed4ee75dc8e0d759e0737a52463410a39674172ff0176981882c6e48ff` |
+| **Stellar Expert Link** | `https://stellar.expert/explorer/testnet/contract/CDPN23YABJ5OJR5LSF5647MZ3AWPBVE73GNB7DI43CVAX36ZG4FSOSRR` |
 | **Short Description** |  Milestone-gated scholarship disbursement and cross-border micropayments for students and migrants in Southeast Asia — built on Stellar Soroban |
 
 ---
@@ -26,7 +26,7 @@ RemitGrade puts the sponsor–student funding relationship on Stellar Soroban. A
 | Feature | Role in RemitGrade |
 |---|---|
 | Soroban smart contracts | Pool logic, grade-gating, tranche release, remittance record-keeping |
-| USDC / XLM transfers | Sponsor deposits, student payouts, direct micropayments |
+| XLM transfers | Sponsor deposits, student payouts, direct micropayments |
 | Custom tokens | Optional university-issued voucher tokens (e.g. TUITION) |
 | Trustlines | Student wallets opt-in to receive institutional stablecoins |
 
