@@ -14,11 +14,11 @@
 
 ## The Problem
 
-A second-year student in Surabaya, Indonesia whose living expenses and tuition are funded by a parent working in South Korea has no way to receive small, frequent USDC transfers without paying 7–10 % in remittance fees — and the parent has no guarantee the money is spent on verified academic progress rather than diverted. Every semester, thousands of Indonesian students drop out or lose housing not because sponsors stop caring, but because the money arrives late, expensive, or unverifiable.
+A second-year student in Surabaya, Indonesia whose living expenses and tuition are funded by a parent working in South Korea has no way to receive small, frequent XLM transfers without paying 7–10 % in remittance fees — and the parent has no guarantee the money is spent on verified academic progress rather than diverted. Every semester, thousands of Indonesian students drop out or lose housing not because sponsors stop caring, but because the money arrives late, expensive, or unverifiable.
 
 ## The Solution
 
-RemitGrade puts the sponsor–student funding relationship on Stellar Soroban. A university admin enrolls a student with a set number of grade milestones. Migrant sponsors deposit USDC directly into the student's on-chain pool. Each time an academic milestone is verified (passing grade, semester completion), the admin unlocks the corresponding tranche, releasing an equal share of pooled USDC to the student's Freighter wallet in seconds for less than $0.001 in fees. Sponsors can also send instant cross-border micropayments directly to any receiver via send_remittance, with an on-chain receipt the student can show to a university registrar.
+RemitGrade puts the sponsor–student funding relationship on Stellar Soroban. A university admin enrolls a student with a set number of grade milestones. Migrant sponsors deposit XLM directly into the student's on-chain pool. Each time an academic milestone is verified (passing grade, semester completion), the admin unlocks the corresponding tranche, releasing an equal share of pooled XLM to the student's Freighter wallet in seconds for less than $0.001 in fees. Sponsors can also send instant cross-border micropayments directly to any receiver via send_remittance, with an on-chain receipt the student can show to a university registrar.
 
 ---
 
@@ -29,7 +29,7 @@ RemitGrade puts the sponsor–student funding relationship on Stellar Soroban. A
 | Soroban smart contracts | Pool logic, grade-gating, tranche release, remittance record-keeping |
 | XLM transfers | Sponsor deposits, student payouts, direct micropayments |
 | Custom tokens | Optional university-issued voucher tokens (e.g. TUITION) |
-| Trustlines | Student wallets opt-in to receive institutional stablecoins |
+| Trustlines | Student wallets opt-in to receive XLM tokens |
 
 ---
 
@@ -37,7 +37,7 @@ RemitGrade puts the sponsor–student funding relationship on Stellar Soroban. A
 
 | Segment | Location | Pain / Incentive |
 |---|---|---|
-| Students (18–24, low-income) | Indonesia, Vietnam, Philippines | Need reliable, fee-free stablecoin funding tied to grades |
+| Students (18–24, low-income) | Indonesia, Vietnam, Philippines | Need reliable, fee-free XLM funding tied to grades |
 | Migrant workers (sponsors) | South Korea, Japan, Saudi Arabia | Send $5–$50 micropayments; lose 7–10% to fees today |
 | Universities & NGOs (admins) | SEA urban centres | Need fraud-proof, grade-verified disbursement trail |
 | Employers / DAOs | Global | Want to sponsor verified student workers with on-chain proof |
@@ -51,22 +51,22 @@ RemitGrade puts the sponsor–student funding relationship on Stellar Soroban. A
       → StudentPool stored on-chain
       → ENROLLED event emitted
 
-2. Sponsor calls deposit_funds(sponsor, USDC_token, student_wallet, 300_USDC)
-      → USDC transferred sponsor → contract (held in pool)
-      → StudentPool.total_deposited += 300 USDC
+2. Sponsor calls deposit_funds(sponsor, XLM_token, student_wallet, 300_XLM)
+      → XLM transferred sponsor → contract (held in pool)
+      → StudentPool.total_deposited += 300 XLM
       → DEPOSIT event emitted
 
 3. Admin calls unlock_grade(admin, student_wallet, index=0)
       → Grade bit 0 set in bitmask
       → GRADE event emitted
 
-4. Admin calls release_tranche(admin, USDC_token, student_wallet, milestone_idx=0)
+4. Admin calls release_tranche(admin, XLM_token, student_wallet, milestone_idx=0)
       → Contract checks grade bit 0 is set
-      → 100 USDC transferred contract → student wallet (< 5 seconds, < $0.001 fee)
-      → StudentPool.total_released += 100 USDC; disbursed flag stored
+      → 100 XLM transferred contract → student wallet (< 5 seconds, < $0.001 fee)
+      → StudentPool.total_released += 100 XLM; disbursed flag stored
       → RELEASE event emitted
 
-5. Sponsor calls send_remittance(sponsor, USDC_token, student_wallet, 5_USDC, "INV-001")
+5. Sponsor calls send_remittance(sponsor, XLM_token, student_wallet, 5_XLM, "INV-001")
       → Atomic transfer: sponsor → student (no escrow hop)
       → RemitReceipt stored with settled = true
       → REMIT event emitted; student shows receipt to registrar
@@ -78,7 +78,7 @@ Demo-able end-to-end in under 2 minutes.
 
 ## Why This Wins
 
-RemitGrade directly addresses Stellar's core thesis — financial access for the unbanked — with a real user base (millions of SEA students reliant on overseas remittances) and a composable contract that serves both the Scholarship disbursement and Micropayments / Cross-border B2B payments hackathon themes simultaneously. Judges see working grade-gated fund release, live USDC transfer, duplicate-disbursement protection, and an on-chain audit trail — all in one demo.
+RemitGrade directly addresses Stellar's core thesis — financial access for the unbanked — with a real user base (millions of SEA students reliant on overseas remittances) and a composable contract that serves both the Scholarship disbursement and Micropayments / Cross-border B2B payments hackathon themes simultaneously. Judges see working grade-gated fund release, live XLM transfer, duplicate-disbursement protection, and an on-chain audit trail — all in one demo.
 
 ---
 
@@ -194,7 +194,7 @@ stellar contract invoke \
   --network testnet \
   -- deposit_funds \
   --sponsor  GSPONSOR...ADDRESS \
-  --token    $USDC_TOKEN_ADDRESS \
+  --token    $XLM_TOKEN_ADDRESS \
   --student  GSTUDENT...ADDRESS \
   --amount   3000000000
 ```
@@ -221,7 +221,7 @@ stellar contract invoke \
   --network testnet \
   -- release_tranche \
   --admin   GADMIN...ADDRESS \
-  --token   $USDC_TOKEN_ADDRESS \
+  --token   $XLM_TOKEN_ADDRESS \
   --student GSTUDENT...ADDRESS \
   --index   0
 ```
@@ -235,7 +235,7 @@ stellar contract invoke \
   --network testnet \
   -- send_remittance \
   --sender    GSPONSOR...ADDRESS \
-  --token     $USDC_TOKEN_ADDRESS \
+  --token     $XLM_TOKEN_ADDRESS \
   --receiver  GSTUDENT...ADDRESS \
   --amount    50000000 \
   --remit_id  "INV-2025-SUB-001"
