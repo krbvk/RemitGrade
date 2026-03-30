@@ -1,0 +1,31 @@
+[package]
+name        = "remit_grade"
+version     = "0.1.0"
+edition     = "2021"
+description = "Grade-gated USDC pool release and cross-border micropayments for SEA students and migrant sponsors — built on Stellar Soroban"
+license     = "MIT"
+
+[lib]
+name       = "remit_grade"
+path       = "src/lib.rs"
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+soroban-sdk = { version = "21.0.0" }
+
+[dev-dependencies]
+soroban-sdk = { version = "21.0.0", features = ["testutils"] }
+
+# ─── Wasm-optimised release profile ──────────────────────────────────────────
+[profile.release]
+opt-level       = "z"       # minimise binary size for Wasm upload
+overflow-checks = true      # keep safe arithmetic in Wasm
+debug           = false
+strip           = "symbols"
+lto             = true
+codegen-units   = 1
+panic           = "abort"   # required: Soroban contracts cannot unwind
+
+[profile.release-with-logs]
+inherits = "release"
+debug    = true
